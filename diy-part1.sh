@@ -16,3 +16,7 @@
 # Add a feed source
 #echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
 #echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
+cat >> feeds.conf.default <<EOF
+src-cpy lean ../lede/package/lean
+src-git passwall https://github.com/xiaorouji/openwrt-passwall
+EOF
