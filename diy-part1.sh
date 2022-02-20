@@ -17,8 +17,5 @@
 #echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
 #echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
 cat >> feeds.conf.default <<EOF
-src-cpy lean ../lede/package/lean
-src-git passwall https://github.com/xiaorouji/openwrt-passwall
-src-git lucil https://github.com/coolsnowwolf/luci
-src-git packagesl https://github.com/coolsnowwolf/packages
+src-git kiddin9 https://github.com/kiddin9/openwrt-packages
 EOF
