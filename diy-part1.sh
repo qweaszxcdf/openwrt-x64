@@ -20,4 +20,5 @@ cat >> feeds.conf.default <<EOF
 src-cpy lean ../lede/package/lean
 src-git passwall https://github.com/xiaorouji/openwrt-passwall
 src-git lucil https://github.com/coolsnowwolf/luci
+src-git packagesl https://github.com/coolsnowwolf/packages
 EOF
