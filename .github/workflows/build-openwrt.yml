@@ -60,7 +60,6 @@ jobs:
         df -hT $PWD
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         git clone https://github.com/coolsnowwolf/lede
-        rm -rf lede/package/lean/mt
         ln -sf /workdir/lede $GITHUB_WORKSPACE/lede
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
         
@@ -89,6 +88,7 @@ jobs:
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x $DIY_P2_SH
         cd openwrt
+        rm -rf feeds/kiddin9/mt-drivers
         $GITHUB_WORKSPACE/$DIY_P2_SH
 
     - name: SSH connection to Actions
