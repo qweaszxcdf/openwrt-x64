@@ -69,7 +69,7 @@ jobs:
       with:
         ccache: 'true'
         toolchain: 'true'
-        clean: 'true'
+        clean: 'false'
         prefix: ${{ github.workspace }}/openwrt
         
     - name: Load custom feeds
