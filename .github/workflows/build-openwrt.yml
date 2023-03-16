@@ -107,7 +107,7 @@ jobs:
       id: package
       run: |
         cd openwrt
-#        ./scripts/ext-toolchain.sh --toolchain /home/runner/work/openwrt-x64/openwrt-x64/toolchain/toolchain-x86_64_gcc-12.2.0_musl --overwrite-config --config x86/64
+#       ./scripts/ext-toolchain.sh --toolchain /home/runner/work/openwrt-x64/openwrt-x64/toolchain/toolchain-x86_64_gcc-12.2.0_musl --overwrite-config --config x86/64
         make defconfig
 
     - name: Compile the firmware
@@ -115,7 +115,7 @@ jobs:
       run: |
         cd openwrt
         echo -e "$(nproc) thread compile"
-#        make tools/ccache/compile 
+#       make tools/ccache/compile 
         make -j$(nproc) || make -j$(nproc) V=s
         echo "status=success" >> $GITHUB_OUTPUT
         grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
