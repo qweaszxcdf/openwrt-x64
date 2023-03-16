@@ -62,16 +62,14 @@ jobs:
         df -hT $PWD
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
-        wget https://downloads.openwrt.org/snapshots/targets/x86/64/openwrt-toolchain-x86-64_gcc-12.2.0_musl.Linux-x86_64.tar.xz
-        tar -xf openwrt-toolchain-x86-64_gcc-12.2.0_musl.Linux-x86_64.tar.xz
-        ln -sf /workdir/openwrt-toolchain-x86-64_gcc-12.2.0_musl.Linux-x86_64/ $GITHUB_WORKSPACE/toolchain
+
         
     - name: Cache
       uses: klever1988/cachewrtbuild@main
       with:
         ccache: 'true'
         toolchain: 'true'
-        clean: 'false'
+        clean: 'true'
         prefix: ${{ github.workspace }}/openwrt
         
     - name: Load custom feeds
