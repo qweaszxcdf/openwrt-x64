@@ -18,7 +18,7 @@ on:
       ssh:
         description: 'SSH connection to Actions'
         required: false
-        default: 'false'
+        default: 'true'
 
 env:
   REPO_URL: https://github.com/openwrt/openwrt
@@ -80,6 +80,7 @@ jobs:
         chmod +x $DIY_P1_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
+        touch .*
 
     - name: Update feeds
       run: |
