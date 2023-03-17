@@ -80,7 +80,6 @@ jobs:
         chmod +x $DIY_P1_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
-        touch .*
 
     - name: Update feeds
       run: |
@@ -115,6 +114,7 @@ jobs:
       run: |
         cd openwrt
         make defconfig
+        find -name ".*" -exec touch {}\;
         echo -e "$(nproc) thread compile"
         make -j$(nproc) || make -j$(nproc) V=s
         echo "status=success" >> $GITHUB_OUTPUT
