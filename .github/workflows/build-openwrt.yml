@@ -82,7 +82,11 @@ jobs:
         $GITHUB_WORKSPACE/$DIY_P1_SH
 
     - name: Update feeds
-      run: cd openwrt && ./scripts/feeds update -a  && rm -rf ./feeds/kiddin9/miniupnpd-iptables && rm -rf ./feeds/kiddin9/.github && rm -rf ./feeds/kiddin9/luci-app-attendedsysupgrade
+      run: |
+        cd openwrt
+        ./scripts/feeds update -a  
+        cd feeds/kiddin9/
+        find ".github/diy/patches" -type f -name '*.patch' -print0 | sort -z | xargs -I % -t -0 -n 1 sh -c "cat '%'  | patch -d './' -p1 -E -R --forward --no-backup-if-mismatch" || echo 1
 
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
