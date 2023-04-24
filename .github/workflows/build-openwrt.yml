@@ -100,6 +100,7 @@ jobs:
         cd openwrt
         rm -rf feeds/kiddin9/mt-drivers
         $GITHUB_WORKSPACE/$DIY_P2_SH
+        find -name "001-build-with-gcc-O3-optimizations.patch" -delete
 
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@v1.0.0
