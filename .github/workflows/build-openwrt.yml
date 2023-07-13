@@ -87,9 +87,7 @@ jobs:
         cd openwrt
         ./scripts/feeds update -a  
         cd feeds/kiddin9/
-        find ".github/diy/patches" -type f -name '*.patch' -print0 | sort -z | xargs -I % -t -0 -n 1 sh -c "cat '%'  | patch -d './' -p1 -E -R --forward --no-backup-if-mismatch" || echo 1
-        rm -rf luci-app-upnp
-        rm -rf miniupnpd-iptables
+ 
 
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
@@ -100,9 +98,8 @@ jobs:
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x $DIY_P2_SH
         cd openwrt
-        rm -rf feeds/kiddin9/mt-drivers
         $GITHUB_WORKSPACE/$DIY_P2_SH
-        find -name "001-build-with-gcc-O3-optimizations.patch" -delete
+
 
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@v1.0.0
