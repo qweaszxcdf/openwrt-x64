@@ -116,7 +116,6 @@ jobs:
         cd openwrt
         make defconfig
         find -name ".*" -exec touch {} \;
-        CONFIG_CCACHE=y make package/vlmcsd/compile
         echo -e "$(nproc) thread compile"
         CONFIG_CCACHE=y make -j$(($(nproc)+1)) || make -j$(($(nproc)+1)) || make -j$(nproc) V=s
         echo "status=success" >> $GITHUB_OUTPUT
