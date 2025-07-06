@@ -65,7 +65,7 @@ jobs:
 
         
     - name: update cache on every commit
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: |
             ${{ github.workspace }}/openwrt/staging_dir
